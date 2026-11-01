@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusCore SIS — Academic Information & Student Management System</title>
+  <meta name="description"
+    content="Institutional Student Information & Academic Records System. Complete student lifecycle management, division allocations, course offerings, marks processing, and lecture attendance registry.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <!-- Global Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-crest">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+          <path d="M6 12v5c3 3 9 3 12 0v-5" />
+        </svg>
+      </div>
+      <div class="brand-info">
+        <strong>CampusCore SIS</strong>
+        <span class="brand-tag">Academic Portal</span>
+      </div>
+    </div>
+
+    <div class="nav-section-label">ACADEMIC MANAGEMENT</div>
+    <nav class="nav-menu">
+      <a class="nav-link active" href="#dashboard" data-page="dashboard" id="nav-dashboard">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="9"></rect>
+          <rect x="14" y="3" width="7" height="5"></rect>
+          <rect x="14" y="12" width="7" height="9"></rect>
+          <rect x="3" y="16" width="7" height="5"></rect>
+        </svg>
+        <span>Dashboard</span>
+      </a>
+      <a class="nav-link" href="#students" data-page="students" id="nav-students">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        <span>Student Directory</span>
+      </a>
+      <a class="nav-link" href="#attendance" data-page="attendance" id="nav-attendance">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Attendance Register</span>
+      </a>
+      <a class="nav-link" href="#enrollments" data-page="enrollments" id="nav-enrollments">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        <span>Enrollments & Marks</span>
+      </a>
+      <a class="nav-link" href="#courses" data-page="courses" id="nav-courses">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span>Course Catalogue</span>
+      </a>
+      <a class="nav-link" href="#academics" data-page="academics" id="nav-academics">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"></path>
+          <line x1="9" y1="21" x2="9" y2="12"></line>
+          <line x1="15" y1="21" x2="15" y2="12"></line>
+        </svg>
+        <span>Academic Structure</span>
+      </a>
+    </nav>
+
+    <div class="nav-section-label">INSTITUTIONAL REPORTS</div>
+    <nav class="nav-menu">
+      <a class="nav-link" href="#queries" data-page="queries" id="nav-queries">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Reports & Inquiries</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-system-card">
+      <div class="system-meta-row">
+        <span class="pulse-indicator"></span>
+        <span class="system-label">Campus Portal Active</span>
+      </div>
+      <div class="system-db-name">Academic Year 2026–2027</div>
+      <div class="system-meta-small">Office of the Registrar & Controller</div>
+    </div>
+  </aside>
+
+  <!-- Main View Container -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-breadcrumbs">
+          <span class="breadcrumb-item">Office of Academic Affairs</span>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-active" id="breadcrumb-current">Dashboard</span>
+        </div>
+        <h1 class="page-title" id="page-title">Institutional Dashboard</h1>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="term-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+          </svg>
+          <span>Active Session: <strong>2026–2027</strong></span>
+        </div>
+
+        <div class="user-badge" title="Administrator Profile">
+          <div class="avatar-initials">RA</div>
+          <div class="user-info">
+            <span class="user-name">Teacher-A</span>
+            <span class="user-role">Teacher</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page: Dashboard -->
+    <section id="dashboard-page" class="page">
+      <!-- Institutional Notice Banner -->
+      <div class="institutional-banner">
+        <div class="banner-content">
+          <span class="banner-pill">ACADEMIC YEAR 2026–2027 · ACTIVE TERM</span>
+          <h2>CampusCore Student Information System</h2>
+          <p>Centralized student records, class division allocations, course curricula, continuous marks evaluation, and
+            fast lecture attendance tracking.</p>
+        </div>
+        <div class="banner-actions">
+          <button class="btn btn-primary" onclick="showPage('attendance')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Mark Class Attendance
+          </button>
+          <button class="btn btn-secondary" onclick="openStudentModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Student
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Grid -->
+      <div class="kpi-grid">
+        <article class="kpi-card">
+          <div class="kpi-head">
+            <span class="kpi-label">TOTAL REGISTERED STUDENTS</span>
+            <div class="kpi-icon blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="stat-students">—</div>
+          <div class="kpi-foot">Active admissions across all divisions</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-head">
+            <span class="kpi-label">ACADEMIC DEPARTMENTS</span>
+            <div class="kpi-icon indigo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="stat-departments">—</div>
+          <div class="kpi-foot">COMP, MECH, CIVIL Engineering</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-head">
+            <span class="kpi-label">CLASS SECTIONS & DIVISIONS</span>
+            <div class="kpi-icon amber">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="9"></rect>
+                <rect x="14" y="3" width="7" height="5"></rect>
+                <rect x="14" y="12" width="7" height="9"></rect>
+                <rect x="3" y="16" width="7" height="5"></rect>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="stat-sections">—</div>
+          <div class="kpi-foot">Scoped by Year, Department & Division</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-head">
+            <span class="kpi-label">COURSE CATALOGUE</span>
+            <div class="kpi-icon emerald">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="stat-courses">—</div>
+          <div class="kpi-foot">Accredited syllabus courses</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-head">
+            <span class="kpi-label">ATTENDANCE COMPLIANCE</span>
+            <div class="kpi-icon teal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-value" id="stat-attendance-rate">—</div>
+          <div class="kpi-foot">Overall recorded session attendance</div>
+        </article>
+      </div>
+
+      <!-- Dashboard Split Layout -->
+      <div class="dash-split-grid">
+        <!-- Division Distribution -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Class Section Enrollment Roster</h3>
+              <p class="panel-sub">Student strength grouped by department, study year and division group.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="loadDashboard()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+              Refresh
+            </button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Department</th>
+                  <th>Study Year</th>
+                  <th>Division</th>
+                  <th>Academic Session</th>
+                  <th class="text-right">Students Enrolled</th>
+                </tr>
+              </thead>
+              <tbody id="division-stats"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Page: Students Directory -->
+    <section id="students-page" class="page hidden">
+      <div class="page-action-bar">
+        <div class="action-bar-title">
+          <h2>Student Records Directory</h2>
+          <p>Official student profiles, enrollment status and division allocations.</p>
+        </div>
+        <div class="action-bar-buttons">
+          <button class="btn btn-secondary" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print Roster
+          </button>
+          <button class="btn btn-primary" id="add-student-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Register Student
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters Toolbar -->
+      <div class="filters-card">
+        <div class="search-input-group">
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input id="student-search" class="search-field"
+            placeholder="Search by roll number, student name, or email...">
+        </div>
+        <div class="filter-dropdowns">
+          <select id="filter-dept" class="select-field" onchange="filterStudentList()">
+            <option value="">All Departments</option>
+          </select>
+          <select id="filter-year" class="select-field" onchange="filterStudentList()">
+            <option value="">All Study Years</option>
+            <option value="1">Year 1 (FE)</option>
+            <option value="2">Year 2 (SE)</option>
+            <option value="3">Year 3 (TE)</option>
+            <option value="4">Year 4 (BE)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Students Table -->
+      <div class="panel">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 100px;">Roll No.</th>
+                <th>Student Profile</th>
+                <th>Department</th>
+                <th>Study Year & Division</th>
+                <th>Academic Year</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="students-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page: Daily Lecture Attendance Register (FAST ATTENDANCE) -->
+    <section id="attendance-page" class="page hidden">
+      <div class="page-action-bar">
+        <div>
+          <h2>Daily Class Attendance Register</h2>
+          <p>Quick batch attendance marking for lectures, attendance history, and compliance logs.</p>
+        </div>
+        <div class="action-bar-buttons">
+          <button class="btn btn-secondary" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print Register
+          </button>
+          <button class="btn btn-secondary" id="add-attendance-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Single Entry
+          </button>
+        </div>
+      </div>
+
+      <!-- FAST LECTURE ATTENDANCE MARKER -->
+      <div class="panel fast-attendance-card">
+        <div class="fast-att-header-panel">
+          <div class="fast-att-title-group">
+            <span class="badge-quick">FAST LECTURE ATTENDANCE</span>
+            <h3>Quick Class Attendance Marker</h3>
+            <p>Select your course lecture and date. Mark attendance for the entire class in seconds.</p>
+          </div>
+          <div class="fast-att-controls">
+            <div class="control-box">
+              <label for="fast-att-offering">Class Lecture / Course Offering</label>
+              <select id="fast-att-offering" class="select-field" onchange="loadOfferingRoster()">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="control-box date-box">
+              <label for="fast-att-date">Lecture Date</label>
+              <input type="date" id="fast-att-date" class="form-control" onchange="loadOfferingRoster()">
+            </div>
+          </div>
+        </div>
+
+        <div class="roster-toolbar">
+          <div class="roster-class-details" id="roster-class-details">
+            <strong id="roster-offering-name">Select a course above</strong>
+            <span id="roster-offering-meta"></span>
+          </div>
+          <div class="roster-batch-actions">
+            <button class="btn-fast-action present" onclick="setAllAttendance('Present')">✓ Mark All Present</button>
+            <button class="btn-fast-action absent" onclick="setAllAttendance('Absent')">✕ Mark All Absent</button>
+            <div class="roster-counter-pills">
+              <span class="count-pill present" id="count-present">0 Present</span>
+              <span class="count-pill absent" id="count-absent">0 Absent</span>
+              <span class="count-pill late" id="count-late">0 Late</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fast Roster Table -->
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 100px;">Roll No.</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th style="width: 320px;" class="text-right">Attendance Status</th>
+              </tr>
+            </thead>
+            <tbody id="fast-roster-tbody">
+              <tr>
+                <td colspan="4" class="empty">Select a course offering above to load the student list.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="fast-att-footer">
+          <span class="footer-help-text">Click Present, Absent, or Late for any student. Click below to save the entire
+            lecture.</span>
+          <button class="btn btn-primary" id="btn-save-batch-attendance" onclick="submitBatchAttendance()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Save Lecture Attendance
+          </button>
+        </div>
+      </div>
+
+      <!-- HISTORICAL ATTENDANCE LOGS -->
+      <div class="panel spaced">
+        <div class="panel-header">
+          <div>
+            <h3>Attendance Log History</h3>
+            <p class="panel-sub">Recent session records across all courses and class divisions.</p>
+          </div>
+          <div class="filters-card-inline">
+            <input id="att-filter-search" class="search-field" style="width: 220px;"
+              placeholder="Search student or roll no..." oninput="filterAttendanceTable()">
+            <select id="att-filter-status" class="select-field" style="width: 140px;"
+              onchange="filterAttendanceTable()">
+              <option value="">All Statuses</option>
+              <option value="Present">Present</option>
+              <option value="Absent">Absent</option>
+              <option value="Late">Late</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 120px;">Session Date</th>
+                <th style="width: 90px;">Roll No.</th>
+                <th>Student</th>
+                <th>Course & Subject</th>
+                <th>Attendance Status</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page: Enrollments & Marks -->
+    <section id="enrollments-page" class="page hidden">
+      <div class="page-action-bar">
+        <div>
+          <h2>Student Enrollments & Marks Ledger</h2>
+          <p>Registered course enrollments, continuous internal evaluations, end-semester marks and performance grades.
+          </p>
+        </div>
+        <div class="action-bar-buttons">
+          <button class="btn btn-secondary" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print Ledger
+          </button>
+          <button class="btn btn-primary" id="add-enrollment-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Create Enrollment
+          </button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 90px;">Roll No.</th>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Sem</th>
+                <th>Internal (100)</th>
+                <th>External (100)</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th class="text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="enrollments-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page: Course Catalogue & Offerings -->
+    <section id="courses-page" class="page hidden">
+      <div class="page-action-bar">
+        <div>
+          <h2>Course Catalogue & Offerings</h2>
+          <p>Master curriculum courses and their semester-wise division offerings.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <h3>Course Curriculum Catalogue</h3>
+            <p class="panel-sub">Master course records and approved academic credits.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 120px;">Course Code</th>
+                <th>Course Title</th>
+                <th>Credits</th>
+                <th>Offering Department</th>
+              </tr>
+            </thead>
+            <tbody id="courses-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel spaced">
+        <div class="panel-header">
+          <div>
+            <h3>Active Section Course Offerings</h3>
+            <p class="panel-sub">Courses scheduled for a specific class division and semester term.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Department</th>
+                <th>Year & Division</th>
+                <th>Academic Year</th>
+                <th>Semester</th>
+              </tr>
+            </thead>
+            <tbody id="offerings-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page: Academic Structure -->
+    <section id="academics-page" class="page hidden">
+      <div class="page-action-bar">
+        <div>
+          <h2>Academic Organization Structure</h2>
+          <p>Organizational departments, calendar academic years, and division groups.</p>
+        </div>
+      </div>
+
+      <div class="grid-two-col">
+        <!-- Class Sections -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Class Sections & Divisions</h3>
+              <p class="panel-sub">Division scoped by department, academic year and study year.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Department</th>
+                  <th>Study Year</th>
+                  <th>Division</th>
+                  <th>Academic Year</th>
+                </tr>
+              </thead>
+              <tbody id="sections-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Academic Departments -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Academic Departments</h3>
+              <p class="panel-sub">Registered university departments and codes.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Department Name</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="departments-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page: Academic Reports & Student Inquiries (Formerly SQL Console) -->
+    <section id="queries-page" class="page hidden">
+      <div class="page-action-bar">
+        <div>
+          <h2>Academic Reports & Student Inquiries</h2>
+          <p>Comprehensive student directories, division strength summaries, and performance reports.</p>
+        </div>
+      </div>
+
+      <div class="queries-layout">
+        <!-- Queries Sidebar / List -->
+        <div class="queries-sidebar-panel">
+          <div class="queries-sidebar-header">
+            <h3>Standard Academic Inquiries</h3>
+            <span class="badge-mini">12 Reports</span>
+          </div>
+          <div class="queries-list" id="queries-nav-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Query Execution Stage -->
+        <div class="query-stage-panel">
+          <div class="query-active-header">
+            <div>
+              <div class="query-meta-badges">
+                <span class="query-badge" id="active-query-category">REPORT</span>
+                <span class="query-concept-tag" id="active-query-concept">Institutional Analysis</span>
+              </div>
+              <h3 id="active-query-title">Select a report to generate</h3>
+              <p id="active-query-desc">Select any standard inquiry from the sidebar to inspect data and generate live
+                records.</p>
+            </div>
+            <button class="btn btn-primary" id="btn-run-query" onclick="executeActiveQuery()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Generate Report
+            </button>
+          </div>
+
+          <!-- Code Box (Styled cleanly as Institutional Query Source) -->
+          <div class="sql-code-container">
+            <div class="sql-code-bar">
+              <span class="sql-code-label">SYSTEM QUERY SPECIFICATION</span>
+              <button class="btn-copy-sql" onclick="copyActiveSQL()">Copy Query</button>
+            </div>
+            <pre><code id="active-query-sql">-- Query will appear here</code></pre>
+          </div>
+
+          <!-- Live Output Container -->
+          <div class="query-results-container">
+            <div class="results-header">
+              <div class="results-title-group">
+                <h4>Report Output</h4>
+                <span class="execution-badge" id="query-exec-time">Ready</span>
+              </div>
+              <div class="row-count-badge" id="query-row-count">0 rows</div>
+            </div>
+            <div class="table-wrap query-table-scroll">
+              <table class="data-table" id="query-result-table">
+                <thead id="query-result-thead">
+                  <tr>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="query-result-tbody">
+                  <tr>
+                    <td class="empty">Click "Generate Report" above to fetch live records.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Add / Edit Student -->
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <span class="modal-pretitle">STUDENT RECORD</span>
+          <h2 id="modal-title">Register Student</h2>
+        </div>
+        <button class="btn-close" id="close-modal" aria-label="Close dialog">×</button>
+      </div>
+      <form id="student-form">
+        <input type="hidden" id="student-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="roll-no">Roll Number <span class="req">*</span></label>
+            <input id="roll-no" class="form-control" required maxlength="20" placeholder="e.g. 306">
+            <small class="form-hint">Unique institutional roll number</small>
+          </div>
+          <div class="form-group">
+            <label for="full-name">Full Name <span class="req">*</span></label>
+            <input id="full-name" class="form-control" required maxlength="100" placeholder="e.g. Tanvi Kulkarni">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input id="email" type="email" class="form-control" placeholder="student@example.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Contact</label>
+            <input id="phone" class="form-control" maxlength="20" placeholder="10-digit mobile number">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admission-year">Admission Year</label>
+            <input id="admission-year" type="number" class="form-control" min="2000" max="2155" placeholder="2024">
+          </div>
+          <div class="form-group">
+            <label for="section-id">Class Section & Division <span class="req">*</span></label>
+            <select id="section-id" class="form-control" required></select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancel-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Student Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: New Enrollment -->
+  <div id="enrollment-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <span class="modal-pretitle">COURSE REGISTRATION</span>
+          <h2>Create Course Enrollment</h2>
+        </div>
+        <button class="btn-close" data-close="enrollment-modal" aria-label="Close dialog">×</button>
+      </div>
+      <form id="enrollment-form">
+        <div class="form-group">
+          <label for="enroll-student">Select Student <span class="req">*</span></label>
+          <select id="enroll-student" class="form-control" required></select>
+        </div>
+        <div class="form-group">
+          <label for="enroll-offering">Select Course Offering <span class="req">*</span></label>
+          <select id="enroll-offering" class="form-control" required></select>
+          <small class="form-hint">Course offering must belong to student's assigned class division</small>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="enroll-internal">Internal Assessment Marks (0–100)</label>
+            <input id="enroll-internal" class="form-control" type="number" min="0" max="100" step="0.01"
+              placeholder="e.g. 18.00">
+          </div>
+          <div class="form-group">
+            <label for="enroll-external">External Final Exam Marks (0–100)</label>
+            <input id="enroll-external" class="form-control" type="number" min="0" max="100" step="0.01"
+              placeholder="e.g. 52.00">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="enrollment-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Enrollment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Update Examination Marks -->
+  <div id="marks-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <span class="modal-pretitle">EXAMINATION RECORD</span>
+          <h2>Update Examination Marks</h2>
+        </div>
+        <button class="btn-close" data-close="marks-modal" aria-label="Close dialog">×</button>
+      </div>
+      <form id="marks-form">
+        <input type="hidden" id="marks-enrollment-id">
+        <div class="record-meta-box">
+          <div><strong id="marks-student-name">—</strong> (<span id="marks-roll-no">—</span>)</div>
+          <div class="meta-sub" id="marks-course-info">—</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="modal-internal-marks">Internal Assessment Marks</label>
+            <input id="modal-internal-marks" class="form-control" type="number" min="0" max="100" step="0.01"
+              placeholder="0 - 100">
+            <small class="form-hint">Continuous evaluation score</small>
+          </div>
+          <div class="form-group">
+            <label for="modal-external-marks">External Exam Marks</label>
+            <input id="modal-external-marks" class="form-control" type="number" min="0" max="100" step="0.01"
+              placeholder="0 - 100">
+            <small class="form-hint">End-semester examination score</small>
+          </div>
+        </div>
+        <div class="score-preview-box">
+          <span class="score-preview-label">Projected Total Score:</span>
+          <strong class="score-preview-value" id="marks-total-preview">—</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="marks-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Marks</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Single Record Attendance (Exception Case) -->
+  <div id="attendance-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <span class="modal-pretitle">CLASS REGISTER</span>
+          <h2>Record Single Student Attendance</h2>
+        </div>
+        <button class="btn-close" data-close="attendance-modal" aria-label="Close dialog">×</button>
+      </div>
+      <form id="attendance-form">
+        <div class="form-group">
+          <label for="attendance-enrollment">Student Course Enrollment <span class="req">*</span></label>
+          <select id="attendance-enrollment" class="form-control" required></select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="attendance-date">Session Date <span class="req">*</span></label>
+            <input id="attendance-date" type="date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="attendance-status">Status <span class="req">*</span></label>
+            <select id="attendance-status" class="form-control">
+              <option value="Present">Present</option>
+              <option value="Absent">Absent</option>
+              <option value="Late">Late</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="attendance-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Attendance</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js"></script>
+</body>
+
+</html>
