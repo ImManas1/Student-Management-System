@@ -2,9 +2,9 @@
 -- MySQL 8.0+
 -- Run this file in MySQL Workbench or the MySQL command line.
 
-CREATE DATABASE IF NOT EXISTS student_management
+CREATE DATABASE IF NOT EXISTS defaultdb
   CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE student_management;
+USE defaultdb;
 
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS attendance;

@@ -3,7 +3,7 @@ services:
     runtime: node
     name: student-management-system
     rootDir: student-management-system
-    buildCommand: npm ci
+    buildCommand: npm install --production
     startCommand: node server.js
     envVars:
       - key: NODE_ENV

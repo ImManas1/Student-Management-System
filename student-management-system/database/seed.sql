@@ -1,4 +1,4 @@
-USE student_management;
+USE defaultdb;
 
 INSERT INTO departments (department_code, department_name) VALUES
 ('COMP', 'Computer Engineering'),
