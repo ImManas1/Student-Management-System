@@ -1,0 +1,13 @@
+services:
+  - type: web
+    runtime: node
+    name: student-management-system
+    rootDir: student-management-system
+    buildCommand: npm ci
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MYSQL_URL
+        sync: false           # Set manually in Render dashboard
+

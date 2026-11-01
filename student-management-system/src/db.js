@@ -1,13 +1,14 @@
 const mysql = require("mysql2/promise");
 
-// Railway provides MYSQL_URL (or DATABASE_URL) with the full connection string.
-// Fall back to individual env vars for local development.
+// Production: Aiven (or any provider) gives a MYSQL_URL connection string.
+// Local dev: falls back to individual env vars.
 const pool = process.env.MYSQL_URL
   ? mysql.createPool({
       uri: process.env.MYSQL_URL,
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,
+      ssl: { rejectUnauthorized: true },
     })
   : mysql.createPool({
       host: process.env.DB_HOST || "localhost",
